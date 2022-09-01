@@ -10,8 +10,7 @@ type treeNode struct {
 	Right *treeNode
 }
 
-/*树的子结构
-深度优先搜索？
+/*
 */
 func isTreeSubstructure(root *treeNode, sub *treeNode) bool{
 	return false
