@@ -1,11 +1,61 @@
 package main
 
-import "fmt"
-
 func main() {
-	arr := []int{2, 8, 4, 2, 0, 1, 5, 8, 3}
-	fmt.Println(bubble(arr))
+
 }
+
+/*
+1 线性表：数组、栈 队列
+2 链表：单链表、双向链表
+3 字符串： 朴素算法
+4 树：前/中/后序遍历、二叉树、二叉搜索树
+5 散列表：哈希和解决冲突
+*/
+
+
+//两个队列模拟栈
+/*type stack struct {
+	queueA []int
+	queueB []int
+	len    int
+}
+
+func newStack() stack {
+	return stack{}
+}
+func (s *stack) push(v int) {
+	if len(s.queueA) == 0 && len(s.queueB) == 0 {
+		s.queueA = append(s.queueA, v)
+		return
+	}
+	if len(s.queueA) > 0 {
+		s.queueA = append(s.queueA, v)
+	} else if len(s.queueB) > 0 {
+		s.queueB = append(s.queueB, v)
+	}
+
+}
+func (s *stack) pop() int {
+	if len(s.queueA) > 0 {
+		for i := 0; i < len(s.queueA)-1; i++ {
+			s.queueB = append(s.queueB, s.queueA[i])
+		}
+		s.len--
+		res := s.queueA[len(s.queueA)-1]
+		s.queueA = nil
+		return res
+	} else if len(s.queueB) > 0 {
+		for i := 0; i < len(s.queueB)-1; i++ {
+			s.queueA = append(s.queueA, s.queueB[i])
+		}
+		s.len--
+		res := s.queueB[len(s.queueB)-1]
+		s.queueB = nil
+		return res
+	}
+
+	return -1
+}*/
 
 //冒泡 两两交换
 func bubble(arr []int) []int {
