@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Println(match("{{{{{{}"),match("{{}{{{}"),match("{{}{}}{{}}"))
+
 }
 
 /*
@@ -15,7 +13,7 @@ func main() {
 */
 
 //用栈实现括号匹配
-func match(s string) bool {
+/*func match(s string) bool {
 	var stack []int32
 	for _, ss := range s {
 		if ss == '{' {
@@ -26,7 +24,7 @@ func match(s string) bool {
 	}
 
 	return len(stack) == 0
-}
+}*/
 
 // 最小栈
 /*type stack struct {
