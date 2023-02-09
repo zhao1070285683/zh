@@ -1,7 +1,9 @@
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	fmt.Println(match("{{{{{{}"),match("{{}{{{}"),match("{{}{}}{{}}"))
 }
 
 /*
@@ -11,6 +13,20 @@ func main() {
 4 树：前/中/后序遍历、二叉树、二叉搜索树
 5 散列表：哈希和解决冲突
 */
+
+//用栈实现括号匹配
+func match(s string) bool {
+	var stack []int32
+	for _, ss := range s {
+		if ss == '{' {
+			stack = append(stack, ss)
+		} else if ss == '}' {
+			stack = stack[:len(stack)-1]
+		}
+	}
+
+	return len(stack) == 0
+}
 
 // 最小栈
 /*type stack struct {
