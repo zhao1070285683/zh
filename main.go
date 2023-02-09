@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Println(dupstring("aaaaaaaabca"))
+
 }
 
 /*
@@ -14,6 +12,42 @@ func main() {
 5 散列表：哈希和解决冲突
 */
 
+// 最小栈
+/*type stack struct {
+	s   []int
+	min []int
+	len int
+}
+
+func new() *stack {
+	return &stack{}
+}
+
+func (st *stack) push(v int) {
+	st.s = append(st.s, v)
+	if len(st.min) == 0 || st.min[len(st.min)-1] > v {
+		st.min = append(st.min, v)
+	} else {
+		st.min = append(st.min, st.min[len(st.min)-1])
+	}
+	st.len++
+}
+func (st *stack) pop() int {
+	if st.len == 0 {
+		return -1
+	}
+	res := st.s[st.len-1]
+	st.s = st.s[:st.len-1]
+	st.min = st.min[:st.len-1]
+	st.len--
+	return res
+}
+func (st *stack) minVal() int {
+	if st.len == 0 {
+		return -1
+	}
+	return st.min[st.len-1]
+}*/
 
 //两个队列模拟栈
 /*type stack struct {
