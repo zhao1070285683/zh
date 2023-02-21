@@ -1,6 +1,9 @@
 package main
 
+import "fmt"
+
 func main() {
+	fmt.Println(sum([]int{0,1,0,2,1,0,1,3,2,1,2,1}))
 }
 
 /*
@@ -37,14 +40,9 @@ func main() {
 输出：[1]
 */
 
-//todo 栈：给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水
+// 栈：给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水
 /*。
-
-
-
 示例 1：
-
-
 
 输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
 输出：6
@@ -54,6 +52,33 @@ func main() {
 输入：height = [4,2,0,3,2,5]
 输出：9
 */
+
+func sum(height []int) int {
+	var res int
+	for i := 0; i < len(height); {
+		var flag bool
+		for j := i + 1; j < len(height); j++ {
+			if height[j] >= height[i] {
+				for k := i + 1; k < j; k++ {
+					if height[i]-height[k] > 0 {
+						res += height[i] - height[k]
+					}
+				}
+				i = j
+				flag = true
+				break
+			}
+		}
+
+		if !flag {
+			i++
+			flag = false
+		}
+
+	}
+
+	return res
+}
 
 //用栈实现括号匹配
 /*func match(s string) bool {
