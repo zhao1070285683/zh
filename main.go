@@ -51,7 +51,6 @@ func main() {
 
 输入：height = [4,2,0,3,2,5]
 输出：9
-*/
 
 func sum(height []int) int {
 	var res int
@@ -79,6 +78,7 @@ func sum(height []int) int {
 
 	return res
 }
+*/
 
 //用栈实现括号匹配
 /*func match(s string) bool {
