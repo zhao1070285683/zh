@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Println(sum([]int{0,1,0,2,1,0,1,3,2,1,2,1}))
+
 }
 
 /*
@@ -14,12 +12,10 @@ func main() {
 5 散列表：哈希和解决冲突
 */
 
-//todo 队列：滑动窗口中的最大值
+// 队列：滑动窗口中的最大值
 /*给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
 
 返回 滑动窗口中的最大值 。
-
-
 
 示例 1：
 
@@ -38,7 +34,40 @@ func main() {
 
 输入：nums = [1], k = 1
 输出：[1]
+
+func windows(arr []int, size int) []int {
+	var i, j int
+	var res []int
+
+	j = i + size - 1
+	if j > len(arr)-1 {
+		j = len(arr) - 1
+	}
+	for i := 0; i < len(arr) && j < len(arr); i++ {
+		var max int
+		fmt.Println(arr[i],res)
+		if i == 0 || (len(res) > 0 && arr[i-1] == res[len(res)-1]) {
+			for k := i; k <= j; k++ {
+				if arr[k] > max {
+					max = arr[k]
+				}
+			}
+		} else {
+			if arr[j] > res[len(res)-1] {
+				max = arr[j]
+			} else if len(res) > 0 {
+				max = res[len(res)-1]
+			}
+		}
+		res = append(res, max)
+		j++
+	}
+
+	return res
+}
 */
+
+
 
 // 栈：给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水
 /*。
