@@ -1,6 +1,12 @@
 package main
 
+import "fmt"
+
 func main() {
+	head := createLinked()
+	for s:=head; s != nil; s = s.Next {
+		fmt.Println(s.val)
+	}
 
 }
 
@@ -11,6 +17,113 @@ func main() {
 4 树：前/中/后序遍历、二叉树、二叉搜索树
 5 散列表：哈希和解决冲突
 */
+
+//链表逆置
+/*func reverse(head *Node) *Node {
+	if head == nil {
+		return head
+	}
+	p := head
+	q := p.Next
+	for ; q != nil; {
+		s := q.Next
+		q.Next = p
+		p = q
+		q = s
+	}
+	head.Next = nil
+
+	return p
+}*/
+
+//1. 找出两个链表的交点
+/*
+160\. Intersection of Two Linked Lists (Easy)
+
+[Leetcode](https://leetcode.com/problems/intersection-of-two-linked-lists/description/) / [力扣](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/description/)
+
+例如以下示例中 A 和 B 两个链表相交于 c1：
+
+```html
+A:          a1 → a2
+                    ↘
+                      c1 → c2 → c3
+                    ↗
+B:    b1 → b2 → b3
+```
+
+但是不会出现以下相交的情况，因为每个节点只有一个 next 指针，也就只能有一个后继节点，而以下示例中节点 c 有两个后继节点。
+
+```html
+A:          a1 → a2       d1 → d2
+                    ↘  ↗
+                      c
+                    ↗  ↘
+B:    b1 → b2 → b3        e1 → e2
+```
+
+
+
+要求时间复杂度为 O(N)，空间复杂度为 O(1)。如果不存在交点则返回 null。
+
+设 A 的长度为 a + c，B 的长度为 b + c，其中 c 为尾部公共部分长度，可知 a + c + b = b + c + a。
+
+当访问 A 链表的指针访问到链表尾部时，令它从链表 B 的头部开始访问链表 B；同样地，当访问 B 链表的指针访问到链表尾部时，令它从链表 A 的头部开始访问链表 A。这样就能控制访问 A 和 B 两个链表的指针能同时访问到交点。
+
+如果不存在交点，那么 a + b = b + a，以下实现代码中 l1 和 l2 会同时为 null，从而退出循环。
+*/
+
+type Node struct {
+	val  int
+	Next *Node
+}
+
+func createLinked() *Node {
+	/*head:=&Node{}*/
+	head := new(Node)
+	p := head
+	for i := 0; i < 10; i++ {
+		p.val = i
+		p.Next = new(Node)
+		p = p.Next
+	}
+	return head
+}
+
+/*func IntersectionNode(a, b *Node) *Node {
+
+}*/
+
+//将数组中的零挪到后面
+/*func moveZero(arr []int) []int {
+for i, j := 0, len(arr)-1; i < j; {
+	if arr[i] == 0 && arr[j] != 0 {
+		temp := arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+		i++
+		j--
+	} else if arr[i] == 0 && arr[j] == 0 {
+		j--
+	} else {
+		i++
+	}
+}
+
+var count int
+for i := 0; i < len(arr) && count < len(arr); {
+fmt.Println(arr, i)
+if arr[i] == 0 {
+arr = append(arr[:i], arr[i+1:len(arr)]...)
+arr = append(arr, 0)
+} else {
+i++
+}
+count++
+}
+
+return arr
+}*/
 
 // 队列：滑动窗口中的最大值
 /*给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
@@ -66,8 +179,6 @@ func windows(arr []int, size int) []int {
 	return res
 }
 */
-
-
 
 // 栈：给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水
 /*。

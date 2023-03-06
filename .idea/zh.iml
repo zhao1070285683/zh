@@ -2,6 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/Downloads/CS-Notes-master" />
+    <content url="file://$MODULE_DIR$/../git.zuoyebang.cc/inf" />
+    <content url="file://$MODULE_DIR$/../job-scheduler" />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
