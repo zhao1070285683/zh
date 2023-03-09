@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	head := createLinked()
-	for s:=head; s != nil; s = s.Next {
+	for s := head; s != nil; s = s.Next {
 		fmt.Println(s.val)
 	}
 
@@ -17,6 +17,40 @@ func main() {
 4 树：前/中/后序遍历、二叉树、二叉搜索树
 5 散列表：哈希和解决冲突
 */
+type node struct {
+	val   int
+	left  *node
+	right *node
+}
+
+//前序遍历
+func preOrder(root *node) {
+	var stack []*node
+	stack = append(stack, root)
+	for ; len(stack) != 0; {
+		top := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		println(top.val)
+
+		if top.right != nil {
+			stack = append(stack, top.right)
+		}
+
+		if top.left != nil {
+			stack = append(stack, top.left)
+		}
+	}
+}
+
+func preOrder2(root *node) {
+	if root == nil {
+		return
+	}
+	println(root.val)
+	preOrder2(root.left)
+	preOrder2(root.right)
+}
 
 //链表逆置
 /*func reverse(head *Node) *Node {
